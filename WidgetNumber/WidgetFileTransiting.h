@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol Transiting <NSObject>
+@protocol WidgetTransiting <NSObject>
 
 - (BOOL)writeMessageObject:(nullable id<NSCoding>)messageObject forIdentifier:(NSString *)identifier;
 
@@ -18,13 +18,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@protocol TransitingDelegate <NSObject>
+@protocol WidgetTransitingDelegate <NSObject>
 
 - (void)notifyListenerForMessageWithIdentifier:(nullable NSString *)identifier message:(nullable id<NSCoding>)message;
 
 @end
 
-@interface FileTransiting : NSObject <Transiting>{
+@interface WidgetFileTransiting : NSObject <WidgetTransiting>{
  @private
     NSString *_applicationGroupIdentifier;
     NSString *_directory;

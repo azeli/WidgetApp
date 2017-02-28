@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WidgetFileManager.h"
 
-@interface TodayViewController : UIViewController
+@interface TodayViewController : UIViewController{
+ @private
+    WidgetFileManager *_fileManager;
+    NSArray *_arrayName;
+    NSArray *_arraySpecification;
+}
+
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @end

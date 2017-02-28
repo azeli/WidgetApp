@@ -19,8 +19,8 @@
 		FB5FFB881E5C5C8E007A7069 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5FFB871E5C5C8E007A7069 /* TodayViewController.m */; };
 		FB5FFB8B1E5C5C8E007A7069 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB5FFB891E5C5C8E007A7069 /* MainInterface.storyboard */; };
 		FB5FFB8F1E5C5C8E007A7069 /* WidgetNumber.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FB5FFB811E5C5C8D007A7069 /* WidgetNumber.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		FB5FFBA51E5C5E9E007A7069 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5FFB971E5C5E9E007A7069 /* FileManager.m */; };
-		FB5FFBA71E5C5E9E007A7069 /* FileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5FFB9B1E5C5E9E007A7069 /* FileTransiting.m */; };
+		FB5FFBA51E5C5E9E007A7069 /* WidgetFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5FFB971E5C5E9E007A7069 /* WidgetFileManager.m */; };
+		FB5FFBA71E5C5E9E007A7069 /* WidgetFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5FFB9B1E5C5E9E007A7069 /* WidgetFileTransiting.m */; };
 		FB5FFBBB1E5C5EAD007A7069 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5FFBAD1E5C5EAD007A7069 /* FileManager.m */; };
 		FB5FFBBD1E5C5EAD007A7069 /* FileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5FFBB11E5C5EAD007A7069 /* FileTransiting.m */; };
 		FB5FFBC91E5C82D2007A7069 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5FFBC81E5C82D2007A7069 /* TableViewCell.m */; };
@@ -89,10 +89,10 @@
 		FB5FFB8C1E5C5C8E007A7069 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB5FFB941E5C5C9C007A7069 /* WidgetNumber.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetNumber.entitlements; sourceTree = "<group>"; };
 		FB5FFB951E5C5CC7007A7069 /* Numbers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Numbers.entitlements; sourceTree = "<group>"; };
-		FB5FFB961E5C5E9E007A7069 /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
-		FB5FFB971E5C5E9E007A7069 /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
-		FB5FFB9A1E5C5E9E007A7069 /* FileTransiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTransiting.h; sourceTree = "<group>"; };
-		FB5FFB9B1E5C5E9E007A7069 /* FileTransiting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTransiting.m; sourceTree = "<group>"; };
+		FB5FFB961E5C5E9E007A7069 /* WidgetFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WidgetFileManager.h; sourceTree = "<group>"; };
+		FB5FFB971E5C5E9E007A7069 /* WidgetFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WidgetFileManager.m; sourceTree = "<group>"; };
+		FB5FFB9A1E5C5E9E007A7069 /* WidgetFileTransiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WidgetFileTransiting.h; sourceTree = "<group>"; };
+		FB5FFB9B1E5C5E9E007A7069 /* WidgetFileTransiting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WidgetFileTransiting.m; sourceTree = "<group>"; };
 		FB5FFBAC1E5C5EAD007A7069 /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
 		FB5FFBAD1E5C5EAD007A7069 /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
 		FB5FFBB01E5C5EAD007A7069 /* FileTransiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTransiting.h; sourceTree = "<group>"; };
@@ -228,10 +228,10 @@
 		FB5FFBC21E5C6A31007A7069 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FB5FFB961E5C5E9E007A7069 /* FileManager.h */,
-				FB5FFB971E5C5E9E007A7069 /* FileManager.m */,
-				FB5FFB9A1E5C5E9E007A7069 /* FileTransiting.h */,
-				FB5FFB9B1E5C5E9E007A7069 /* FileTransiting.m */,
+				FB5FFB961E5C5E9E007A7069 /* WidgetFileManager.h */,
+				FB5FFB971E5C5E9E007A7069 /* WidgetFileManager.m */,
+				FB5FFB9A1E5C5E9E007A7069 /* WidgetFileTransiting.h */,
+				FB5FFB9B1E5C5E9E007A7069 /* WidgetFileTransiting.m */,
 				FB5FFBC71E5C82D2007A7069 /* TableViewCell.h */,
 				FB5FFBC81E5C82D2007A7069 /* TableViewCell.m */,
 			);
@@ -445,10 +445,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB5FFBA51E5C5E9E007A7069 /* FileManager.m in Sources */,
+				FB5FFBA51E5C5E9E007A7069 /* WidgetFileManager.m in Sources */,
 				FB5FFBC91E5C82D2007A7069 /* TableViewCell.m in Sources */,
 				FB5FFB881E5C5C8E007A7069 /* TodayViewController.m in Sources */,
-				FB5FFBA71E5C5E9E007A7069 /* FileTransiting.m in Sources */,
+				FB5FFBA71E5C5E9E007A7069 /* WidgetFileTransiting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

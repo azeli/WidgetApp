@@ -7,18 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FileTransiting.h"
+#import "WidgetFileTransiting.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FileManager : NSObject <TransitingDelegate>
+@interface WidgetFileManager: NSObject <WidgetTransitingDelegate>{
+ @private
+    NSMutableDictionary *listenerBlocks;
+    id <WidgetTransiting> Messenger;
+}
 
 - (instancetype)initWithApplicationGroupIdentifier:(nullable NSString *)identifier
                                  optionalDirectory:(nullable NSString *)directory NS_DESIGNATED_INITIALIZER;
 
 - (void)passMessageObject:(nullable id <NSCoding>)messageObject
-			   identifier:(nullable NSString *)identifier;
+               identifier:(nullable NSString *)identifier;
 
 - (nullable id)messageWithIdentifier:(nullable NSString *)identifier;
 

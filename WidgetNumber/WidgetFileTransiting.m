@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FileTransiting.h"
+#import "WidgetFileTransiting.h"
 
-@interface FileTransiting ()
+@interface WidgetFileTransiting ()
 
 @end
 
-@implementation FileTransiting
+@implementation WidgetFileTransiting
 
 - (instancetype)init {
     return [self initWithApplicationGroupIdentifier:@"dev.assertion.nonDesignatedInitializer"
@@ -44,9 +44,9 @@
     }
     
     [fileManager createDirectoryAtPath:directoryPath
-                withIntermediateDirectories:YES
-                                 attributes:nil
-                                      error:NULL];
+           withIntermediateDirectories:YES
+                            attributes:nil
+                                 error:NULL];
     
     return directoryPath;
 }

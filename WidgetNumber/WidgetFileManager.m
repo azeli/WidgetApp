@@ -6,7 +6,7 @@
 //  Copyright © 2017 Anna Zelinskaya. All rights reserved.
 //
 
-#import "FileManager.h"
+#import "WidgetFileManager.h"
 
 #include <CoreFoundation/CoreFoundation.h>
 
@@ -20,15 +20,11 @@ void wormholeNotificationCallback(CFNotificationCenterRef center,
                                   void const *object,
                                   CFDictionaryRef userInfo);
 
-@interface FileManager (){
- @private
-    NSMutableDictionary *listenerBlocks;
-    id <Transiting> Messenger;
-}
+@interface WidgetFileManager ()
 
 @end
 
-@implementation FileManager
+@implementation WidgetFileManager
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-designated-initializers"
@@ -55,9 +51,9 @@ void wormholeNotificationCallback(CFNotificationCenterRef center,
             return nil;
         }
         
-        Messenger = [[FileTransiting alloc] initWithApplicationGroupIdentifier:[identifier copy]
-                                                                                    optionalDirectory:[directory copy]];
-
+        Messenger = [[WidgetFileTransiting alloc] initWithApplicationGroupIdentifier:[identifier copy]
+                                                             optionalDirectory:[directory copy]];
+        
         listenerBlocks = [NSMutableDictionary dictionary];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -102,10 +98,10 @@ void wormholeNotificationCallback(CFNotificationCenterRef center,
 }
 
 void NotificationCallback(CFNotificationCenterRef center,
-                               void *observer,
-                               CFStringRef name,
-                               void const *object,
-                               CFDictionaryRef userInfo) {
+                          void *observer,
+                          CFStringRef name,
+                          void const *object,
+                          CFDictionaryRef userInfo) {
     NSString *identifier = (__bridge NSString *)name;
     NSObject *sender = (__bridge NSObject *)(observer);
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationName
@@ -129,7 +125,7 @@ void NotificationCallback(CFNotificationCenterRef center,
 
 - (void)notifyListenerForMessageWithIdentifier:(nullable NSString *)identifier message:(nullable id<NSCoding>)message {
     typedef void (^MessageListenerBlock)(id messageObject);
-
+    
     MessageListenerBlock listenerBlock = [self listenerBlockForIdentifier:identifier];
     
     if (listenerBlock) {

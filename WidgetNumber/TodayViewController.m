@@ -8,28 +8,22 @@
 
 #import "TodayViewController.h"
 #import <NotificationCenter/NotificationCenter.h>
-#import "FileManager.h"
 #import "TableViewCell.h"
 
 @interface TodayViewController ()
-
-@property (nonatomic, strong) FileManager *fileManager;
-@property (nonatomic, strong) NSArray *arrayName;
-@property (nonatomic, strong) NSArray *arraySpecification;
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation TodayViewController
 
 - (IBAction)didTap:(UIButton *)sender {
-    [self.fileManager passMessageObject:@{@"button" : @(1)} identifier:@"buttonKey"];
-    [self viewDidAppear:YES];
+    [_fileManager passMessageObject:@{@"button" : @(0)} identifier:@"buttonKey"];
+    [self updateArrayData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.fileManager = [[FileManager alloc] initWithApplicationGroupIdentifier:@"group.com.digdes.ExtensionSharing" optionalDirectory:nil];
+    _fileManager = [[WidgetFileManager alloc] initWithApplicationGroupIdentifier:@"group.com.digdes.ExtensionSharing" optionalDirectory:nil];
     self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
 }
 
@@ -40,11 +34,15 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.fileManager listenForMessageWithIdentifier:@"data" listener:^(id messageObject) {
+    [self updateArrayData];
+}
+
+- (void)updateArrayData {
+    [_fileManager listenForMessageWithIdentifier:@"data" listener:^(id messageObject) {
         NSArray *testArray = [messageObject valueForKey:@"dataKey"];
-        self.arrayName = [testArray valueForKeyPath:@"name"];
-        self.arraySpecification = [testArray valueForKeyPath:@"text"];
-        [_tableView reloadData];
+        _arrayName = [testArray valueForKeyPath:@"name"];
+        _arraySpecification = [testArray valueForKeyPath:@"text"];
+        [self.tableView reloadData];
     }];
 }
 
@@ -72,13 +70,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.arrayName count];
+    return [_arrayName count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier"];
-    cell.cellLabelName.text = [self.arrayName objectAtIndex:indexPath.row];
-    cell.cellLabelText.text = [self.arraySpecification objectAtIndex:indexPath.row];
+    cell.cellLabelName.text = [_arrayName objectAtIndex:indexPath.row];
+    cell.cellLabelText.text = [_arraySpecification objectAtIndex:indexPath.row];
     return cell;
 }
 
